@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget.ExampleTheme.Button" parent="Widget.MaterialComponents.Button">
+        <item name="shapeCornerFamily">rounded</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Widget.ExampleTheme.Button.Sharp" parent="Widget.MaterialComponents.Button">
+        <item name="shapeCornerFamily">cut</item>
+    </style>
+    
+</resources>
