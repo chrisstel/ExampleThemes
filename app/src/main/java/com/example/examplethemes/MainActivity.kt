@@ -12,29 +12,50 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        when (getThemeType()) {
-            "dark" -> setDarkTheme()
-            else -> setLightTheme()
-        }
+        setCurrentTheme()
 
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(_binding.root)
-
-        _binding.btnDarkTheme.setOnClickListener {
-            setDarkTheme()
-            saveThemeType("dark")
-        }
-
 
         _binding.btnLightTheme.setOnClickListener {
             setLightTheme()
             saveThemeType("light")
         }
+
+        _binding.btnGreenTheme.setOnClickListener {
+            setGreenTheme()
+            saveThemeType("green")
+        }
+
+        _binding.btnDarkTheme.setOnClickListener {
+            setDarkTheme()
+            saveThemeType("dark")
+        }
     }
 
-    private fun setLightTheme() = AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-    private fun setDarkTheme() = AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+    private fun setCurrentTheme() {
+        when (getThemeType()) {
+            "dark" -> setDarkTheme()
+            "green" -> setGreenTheme()
+            else -> setLightTheme()
+        }
+    }
+    private fun setLightTheme() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        recreate()
+    }
 
+    private fun setGreenTheme() {
+        setTheme(R.style.Theme_Green_ExampleThemes)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        recreate()
+    }
+
+    private fun setDarkTheme() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        recreate()
+    }
+    private fun getThemeType() = getSharedPreferences("ThemeAppearance", Context.MODE_PRIVATE).getString("themeType", "default")
     private fun saveThemeType(type: String) {
         val sharedPreferences = getSharedPreferences("ThemeAppearance", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
@@ -44,5 +65,4 @@ class MainActivity : AppCompatActivity() {
             editor.apply()
         }
     }
-    private fun getThemeType() = getSharedPreferences("ThemeAppearance", Context.MODE_PRIVATE).getString("themeType", "default")
 }

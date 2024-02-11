@@ -13,11 +13,12 @@
 
     <style name="Theme.ExampleThemes" parent="Base.Theme.ExampleThemes"/>
 
-    <style name="Theme.ExampleThemes.Green" parent="Theme.ExampleThemes">
-        <item name="colorOnPrimary">@color/green_500</item>
+    <style name="Theme.Green.ExampleThemes" parent="Theme.ExampleThemes">
+        <item name="colorPrimary">@color/green_500</item>
         <item name="colorPrimaryVariant">@color/green_700</item>
         <item name="android:colorBackground">@color/white</item>
-        <item name="materialButtonStyle">@style/Widget.ExampleTheme.Button.Sharp</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
 </resources>
