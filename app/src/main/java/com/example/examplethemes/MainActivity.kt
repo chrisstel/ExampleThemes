@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
             else -> setLightTheme()
         }
     }
+
     private fun setLightTheme() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         recreate()
@@ -55,7 +56,9 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         recreate()
     }
+
     private fun getThemeType() = getSharedPreferences("ThemeAppearance", Context.MODE_PRIVATE).getString("themeType", "default")
+
     private fun saveThemeType(type: String) {
         val sharedPreferences = getSharedPreferences("ThemeAppearance", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
